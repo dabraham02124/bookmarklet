@@ -15,11 +15,11 @@ javascript:(
 	    return "<IMG style=\"max-width:98%;\" SRC=\""+s+"\"><BR><A HREF=\""+s+"\">"+s+"<BR>";
 	}
 
-	var doc=open().document;
-	var links=document.links
+	var doc = open().document;
+	var links = document.links;
 
 	for (var i=0; i < links.length ;++i) {
-	    var href=links[i].href;
+	    var href = links[i].href;
 	    if (href && imageP(href)) {
 		doc.write(getImg(href)+"<BR>");
             }
