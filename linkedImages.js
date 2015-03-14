@@ -11,20 +11,20 @@ javascript:(
 	function hrefEncode(s) {
 	    return s.replace(/&/g,'&amp;').replace(/>/g,'&gt;').replace(/</g,'&lt;').replace(/"/g,'&quot;');
 	}
+	function getImg(s) {
+	    return "<IMG style=\"max-width:98%;\" SRC=\""+s+"\"><BR><A HREF=\""+s+"\">"+s+"<BR>";
+	}
 
 	var doc=open().document;
-	doc.write('<p>Images linked to by '+hrefEncode(location.href)+':</p><hr>');
+	var links=document.links
 
-	for (var i=0; var link=document.links[i]; ++i){
-	    var href=link.href;
-	    if ( href && imageP(href))
-		doc.write('<p>'+link.innerHTML+' ('+hrefEncode(href)+')<br><img src="'+hrefEncode(href)+'">');
+	for (var i=0; i < links.length ;++i) {
+	    var href=links[i].href;
+	    if (href && imageP(href)) {
+		doc.write(getImg(href)+"<BR>");
+            }
 	}
 	doc.close();
     }
 )
 ()
-
-
-
-
